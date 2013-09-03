@@ -53,7 +53,8 @@
     } else {
       this.data[geojson.id] = geojson;
     }
-    if ( callback ) callback( null, geojson);
+    callback.resolve(geojson);
+    //if ( callback ) callback( null, geojson);
   };
 
   // remove the data from the index and data with id returns true if removed successfully.
@@ -66,8 +67,9 @@
 
   // return the data stored at id
   Memory.prototype.get = function(id, callback){
-    if ( callback ) { 
-      callback( null, this.data[id] );
+    if ( callback ) {
+        callback.resolve(this.data[id]); 
+//      callback( null, this.data[id] );
     }
   };
 
